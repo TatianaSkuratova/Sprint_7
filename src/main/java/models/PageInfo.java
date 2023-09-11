@@ -1,3 +1,5 @@
+package models;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class PageInfo {
-    int page;
-    int total;
-    int limit;
+    private int page;
+    private int total;
+    private int limit;
 }

@@ -1,15 +1,17 @@
-
-import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import models.Order;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import service.CourierService;
+import service.Endpoints;
+import service.OrderService;
 
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -21,7 +23,7 @@ public class TestOrderCourier {
     public static final String[] EMPTY_COLOR = new String[] {};
 
 
-    ScooterServiceClient client = new ScooterServiceClient();
+    OrderService orderService = new OrderService();
     public Order order;
     private String firstName;
     private String lastName;
@@ -38,7 +40,7 @@ public class TestOrderCourier {
                 .setContentType(ContentType.JSON)
                 .setBaseUri(Endpoints.SCOOTER_SERVICE_URI)
                 .build();
-        client.setRequestSpecification(requestSpec);
+        orderService.setRequestSpecification(requestSpec);
     }
     @Step("Create order with {color}")
     @Parameterized.Parameters()
@@ -77,7 +79,7 @@ public class TestOrderCourier {
                 .withColor(color)
                 .withComment(comment)
                 .build();
-        ValidatableResponse response = client.createOrder(order);
+        ValidatableResponse response = orderService.createOrder(order);
         response.assertThat().statusCode(201).and().body("track", notNullValue());
     }
 

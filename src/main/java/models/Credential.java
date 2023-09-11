@@ -1,11 +1,12 @@
+package models;
+
 public class Credential {
 
     private String login;
     private String password;
 
     public static Credential fromCourier(Courier courier){
-        return new Credential
-                .Builder()
+        return new Builder()
                 .withLogin(courier.getLogin())
                 .withPassword(courier.getPassword())
                 .build();

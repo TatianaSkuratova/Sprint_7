@@ -1,3 +1,5 @@
+package service;
+
 public final class Endpoints {
     public static final String SCOOTER_SERVICE_URI = "https://qa-scooter.praktikum-services.ru/";
     public static final String CREATE_COURIER_ENDPOINT = "api/v1/courier";

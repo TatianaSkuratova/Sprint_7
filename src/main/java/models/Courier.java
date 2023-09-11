@@ -1,25 +1,29 @@
-import java.time.Period;
+package models;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
 public class Courier {
 
-    String login;
-    String password;
-    String firstName;
+    private String login;
+    private String password;
+    private String firstName;
 
     public static class Builder{
         private Courier newCourier;
         public Builder(){
             newCourier = new Courier();
         }
-        public Builder withLogin(String login){
+        public Builder login(String login){
             newCourier.login = login;
             return this;
         }
-        public Builder withPassword(String password){
+        public Builder password(String password){
             newCourier.password = password;
             return this;
         }
-        public Builder withFirstName(String firstName){
+        public Builder firstName(String firstName){
             newCourier.firstName = firstName;
             return this;
         }
@@ -27,16 +31,4 @@ public class Courier {
             return newCourier;
         }
     }
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
 }

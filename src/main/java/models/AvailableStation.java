@@ -1,3 +1,5 @@
+package models;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -6,8 +8,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class AvailableStation {
-    String name;
-    String number;
-    String color;
+    private String name;
+    private String number;
+    private String color;
 }
 
